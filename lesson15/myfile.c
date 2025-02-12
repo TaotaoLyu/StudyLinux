@@ -4,14 +4,35 @@
 #include<fcntl.h>
 #include<unistd.h>
 #include<errno.h>
-
+#include<string.h>
 
 int main()
 {
    
+    int fd=open("log.txt",O_WRONLY|O_TRUNC);
+    pid_t id=fork();
+    if(id==0)
+    {
+        int fd2=open("hello.txt",O_WRONLY|O_CREAT|O_TRUNC,0666);
+        printf("child fd: %d\n",fd2);
+        return 0;
+        char* buffer=(char*)"i_love_china\n";
+        int ret=write(3,buffer,strlen(buffer));
+        if(ret==-1)
+        {
+            perror("write");
+        }
+        else 
+        {
+            printf("write bytes: %d\n",ret);
+        }
+        return 0;
+    }
+    close(fd);
+    return 0;
 
     //read redirect code
-    int fd=open("log.txt",O_RDONLY);
+    /*int fd=open("log.txt",O_RDONLY);
     if(fd<0)//handling error conditino
     {
         perror("open");
@@ -26,7 +47,7 @@ int main()
     
     
     close(fd);
-
+    */
     //write redirect code
     /*
     umask(0);
