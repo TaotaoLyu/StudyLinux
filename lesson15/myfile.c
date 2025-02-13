@@ -10,8 +10,10 @@ int main()
 {
    
     int fd=open("log.txt",O_WRONLY|O_TRUNC);
-    pid_t id=fork();
-    if(id==0)
+    dup2(fd,1);
+    write(3,"ooo\n",4);
+    //pid_t id=fork();
+    /*if(id==0)
     {
         int fd2=open("hello.txt",O_WRONLY|O_CREAT|O_TRUNC,0666);
         printf("child fd: %d\n",fd2);
@@ -27,7 +29,7 @@ int main()
             printf("write bytes: %d\n",ret);
         }
         return 0;
-    }
+    }*/
     close(fd);
     return 0;
 
