@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 
+.vscode/*
+
 # Compiled Object files
 *.slo
 *.lo
@@ -30,3 +32,4 @@
 *.exe
 *.out
 *.app
+.gitignore
