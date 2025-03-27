@@ -74,9 +74,10 @@ namespace tao
                     _tp = new ThreadPool(num);
                 _singlock.unlock();
             }
-            return _tp;
+            // return _tp;
+            return const_cast<ThreadPool<T>*>(_tp);
         }
-        void run()
+        void run() 
         {
             for (auto &t : _threads)
             {
@@ -85,7 +86,7 @@ namespace tao
                 printf("%s run....\n",t->threadname().c_str());
             }
         }
-        void push(const T &in)
+        void push(const T &in) 
         {
             // pthread_mutex_lock(&_mutex);
             LockGuard lockguard(&_mutex);
@@ -107,11 +108,12 @@ namespace tao
         std::vector<Thread *> _threads;
         pthread_mutex_t _mutex;
         pthread_cond_t _cond;
-        static ThreadPool<T> *_tp;
+        volatile static ThreadPool<T> *_tp;
         static std::mutex _singlock;
     };
     template <class T>
-    ThreadPool<T> *ThreadPool<T>::_tp = nullptr;
+    volatile ThreadPool<T> *ThreadPool<T>::_tp = nullptr;
+
     template<class T>
     std::mutex ThreadPool<T>::_singlock;
 
