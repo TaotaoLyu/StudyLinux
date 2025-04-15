@@ -42,7 +42,8 @@ namespace Server
             struct sockaddr_in local;
             bzero(&local, sizeof(local)); // 填充字段置为零
             local.sin_family = AF_INET;
-            local.sin_addr.s_addr = inet_addr(_ip.c_str());
+            //local.sin_addr.s_addr = inet_addr(_ip.c_str());//绑定所有IP,不指定IP
+            local.sin_addr.s_addr=htonl(INADDR_ANY);
             local.sin_port = htons(_port);
             int n = bind(_sockfd, (struct sockaddr *)&local, sizeof(local));
             if (n == -1)
