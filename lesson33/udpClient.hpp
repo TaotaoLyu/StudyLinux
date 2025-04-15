@@ -37,12 +37,13 @@ namespace Client
             bzero(&server,sizeof(server));
             server.sin_family=AF_INET;
             server.sin_addr.s_addr=inet_addr(_serverip.c_str());
-            server.sin_port=htons(_serverport);
+            server.sin_port=htons(_serverport);//注意字节序(大小端)
             string message;
             while(!_quit)
             {
                 cout<<"Please Enter# ";
                 getline(cin,message);
+                //第一次调用sendto时，OS自动bind
                 ssize_t n=sendto(_sockfd,message.c_str(),message.size(),0,(struct sockaddr*)&server,sizeof(server));
             }
         }
