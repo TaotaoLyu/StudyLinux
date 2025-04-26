@@ -1,0 +1,6 @@
+apple:苹果
+water:水
+computer:电脑
+china:中国
+usa:美国
+uk:英国
