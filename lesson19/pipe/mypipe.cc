@@ -23,11 +23,11 @@ int main()
         {
             char buffer[1024];
             snprintf(buffer,sizeof buffer -1,
-                "I am child process, my pid is %d, cnt: %d",getpid(),cnt++);
+                "I am child process, my pid is %d, cnt: %d\n",getpid(),cnt++);
             write(fds[1],buffer,strlen(buffer));
-            if(cnt==6) break;
+            if(cnt==60) break;
             //std::cout<<"cnt: "<<cnt<<std::endl;
-            sleep(5);
+            // sleep(1);
         }
         //
         close(fds[1]);
@@ -39,6 +39,7 @@ int main()
     while(true)
     {
         //sleep(20000);
+        sleep(5);
         char buffer[1024];
         std::cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n";
         int num=read(fds[0],buffer,sizeof buffer -1);
