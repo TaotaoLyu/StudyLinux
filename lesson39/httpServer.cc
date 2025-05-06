@@ -52,22 +52,23 @@ bool Get(const HttpRequest &req, HttpResponse &resp)
     respheader += std::to_string(req.file_size);
     respheader += "\r\n";
     // respheader += "Location: https://www.gzhu.edu.cn/\r\n";
+    respheader += "Set-Cookie: name=1234;max-age=120;path=/\r\n";
 
     std::string respblank = "\r\n";
 
     // resp.body_str = std::shared_ptr<char>(new char[req.file_size + 100]);
     std::string body;
-    body.resize(req.file_size+10);
-    if (!Util::readFile(req.path,(char*)body.c_str(),body.size()))
+    body.resize(req.file_size + 10);
+    if (!Util::readFile(req.path, (char *)body.c_str(), body.size()))
     {
-        logMessage(ERROR,"read error");
+        logMessage(ERROR, "read error");
         return false;
     }
     resp.outbuffer += respline;
     resp.outbuffer += respheader;
     resp.outbuffer += respblank;
 
-    resp.outbuffer+=body;
+    resp.outbuffer += body;
     return true;
     // std::cout << "-------------------HTTP BEGIN--------------------------\n";
     // std::cout << resp.outbuffer;
