@@ -1,6 +1,7 @@
 
 cc=g++
-LD=-DMYSELF
+#LD=-DMYSELF 
+LD=-DJSON
 
 
 .PHONY:ALL

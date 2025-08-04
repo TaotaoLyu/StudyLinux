@@ -207,8 +207,8 @@ bool recvPackage(int sock, std::string &inbuffer, std::string *package)
             inbuffer += buffer;
 
             auto pos = inbuffer.find(LINE_SEP);
-            std::cout << "inbufer:\n"
-                      << inbuffer << std::endl;
+           // std::cout << "inbufer:\n"
+           //           << inbuffer << std::endl;
             if (pos == std::string::npos)
                 continue;
                 
