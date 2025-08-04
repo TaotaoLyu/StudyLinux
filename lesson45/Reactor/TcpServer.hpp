@@ -144,6 +144,7 @@ namespace tcpserver
                 }
             }
 
+            //是否添加读事件关心
             if (!conn->outbuffer_.empty()) // 不为空
                 EnablieReadWrite(conn,true,true);
             else // 发完了
@@ -176,6 +177,8 @@ namespace tcpserver
                 int sock = socker_.Accept(&clientip, &clienport, &err);
                 if (sock >= 0)
                 {
+                    //读事件不能常设，读事件在大部分时间都是就绪的，在空间不足是再添加关心
+                    //在sender中视情况添加
                     AddConnection(sock, EPOLLIN | EPOLLET,
                                   std::bind(&TcpServer::Recver, this, std::placeholders::_1),
                                   std::bind(&TcpServer::Sender, this, std::placeholders::_1),

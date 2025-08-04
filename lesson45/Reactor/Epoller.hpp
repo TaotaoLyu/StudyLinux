@@ -35,7 +35,7 @@ public:
         }
         logMessage(NORMAL, "epoll create success, epfd: %d", _epfd);
     }
-    // user->kernel
+    // user -> kernel
     bool AddEvent(int sock, uint32_t events)
     {
         struct epoll_event ev;
@@ -45,6 +45,8 @@ public:
         int ret = epoll_ctl(_epfd, EPOLL_CTL_ADD, sock, &ev);
         return ret == 0;
     }
+
+    //kernel -> user
     int Wait(struct epoll_event revs[], int num, int timeout)
     {
         return epoll_wait(_epfd, revs, num, timeout);
