@@ -1,0 +1,13 @@
+[NORMAL][2025-08-04 22:14:32][pid: 24674]create daemon process success...
+[NORMAL][2025-08-04 22:14:32][pid: 24674]create new sock 3
+[NORMAL][2025-08-04 22:14:32][pid: 24674]bind success 
+[NORMAL][2025-08-04 22:14:32][pid: 24674]listen socket success
+[NORMAL][2025-08-04 22:14:32][pid: 24674]epoll create success, epfd: 4
+[NORMAL][2025-08-04 22:15:3][pid: 24674]have event ready
+[NORMAL][2025-08-04 22:15:3][pid: 24674]accept new link,sock 5
+[NORMAL][2025-08-04 22:15:5][pid: 24674]have event ready
+[DEBUG][2025-08-04 22:15:5][pid: 24674]3 * 7 = 21(status: 0)
+[NORMAL][2025-08-04 22:15:9][pid: 24674]have event ready
+[DEBUG][2025-08-04 22:15:9][pid: 24674]99 / 10 = 9(status: 0)
+[NORMAL][2025-08-04 22:15:13][pid: 24674]have event ready
+[DEBUG][2025-08-04 22:15:13][pid: 24674]99 * 4 = 396(status: 0)
